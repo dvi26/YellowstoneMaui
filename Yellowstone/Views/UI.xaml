@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UI.Views.UI"
+             Title="UI" xmlns:local="clr-namespace:Yellowstone.ViewModel">
+
+    <Page.BindingContext>
+        <local:clsUIViewModel />
+    </Page.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10">
+            <Label>El numero de filas afectadas es de:</Label>
+            <Label Text="{Binding FilasAfectadas}" FontSize="24" TextColor="Green" />
+            <ListView ItemsSource="{Binding ListadoCompleto}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Border Margin="0,0,0,5" Stroke="AntiqueWhite">
+                                <Frame Padding="10" Margin="5" BorderColor="Gold" CornerRadius="5">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Nombre}" FontSize="14"/>
+                                    <Picker ItemsSource="{Binding ListadoRazas}" ItemDisplayBinding="{Binding Nombre}" SelectedItem="{Binding RazaSeleccionada}" ></Picker>
+                                </VerticalStackLayout>
+                            </Frame>
+                            </Border >
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>            
+            </ListView>
+
+            
+                <Button Text="Editar"
+                        Command="{Binding GuardarBoton}" />
+            
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
